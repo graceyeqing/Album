@@ -107,6 +107,8 @@ public class AlbumActivity extends BaseActivity implements
         mView.setTitle(mWidget.getTitle());
         mView.setCompleteDisplay(false);
         mView.setLoadingDisplay(true);
+        mView.hideToolBar(true);
+        mView.hideBottomLayout(true);
 
         requestPermission(PERMISSION_STORAGE, CODE_PERMISSION_STORAGE);
     }

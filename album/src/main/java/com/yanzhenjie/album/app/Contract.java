@@ -137,6 +137,10 @@ public final class Contract {
          * @param count the number of items checked.
          */
         public abstract void setCheckedCount(int count);
+
+        public abstract void hideToolBar(boolean hide);
+
+        public abstract void hideBottomLayout(boolean hide);
     }
 
     public interface NullPresenter extends BasePresenter {

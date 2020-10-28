@@ -16,7 +16,9 @@
 -->
 <resources>
     <color name="albumColorPrimary">#2196F3</color>
-    <color name="albumColorPrimaryDark">#1E88E5</color>
+<!--    <color name="albumColorPrimaryDark">#1E88E5</color>-->
+<!--    <color name="albumColorPrimary">#ffffff</color>-->
+    <color name="albumColorPrimaryDark">#ffffff</color>
     <color name="albumColorPrimaryBlack">#2B2B2B</color>
 
     <color name="albumPageLight">#FFF</color>
@@ -24,6 +26,8 @@
 
     <color name="albumFontHint">#808080</color>
     <color name="albumFontLight">#FFF</color>
+<!--    <color name="albumFontHint">#808080</color>-->
+<!--    <color name="albumFontLight">#000000</color>-->
     <color name="albumFontDark">#333</color>
 
     <color name="albumIconDark">#333</color>

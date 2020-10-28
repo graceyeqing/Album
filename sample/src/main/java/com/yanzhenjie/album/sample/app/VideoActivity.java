@@ -79,12 +79,12 @@ public class VideoActivity extends AppCompatActivity {
     private void selectVideo() {
         Album.video(this)
                 .multipleChoice()
-                .columnCount(2)
-                .selectCount(6)
+                .columnCount(4)
+                .selectCount(1)
                 .camera(true)
                 .checkedList(mAlbumFiles)
                 .widget(
-                        Widget.newDarkBuilder(this)
+                        Widget.newLightBuilder(this)
                                 .title(mToolbar.getTitle().toString())
                                 .build()
                 )

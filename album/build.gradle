@@ -20,4 +20,4 @@ dependencies {
     api rootProject.ext.dependencies.mediaScanner
 }
 
-apply from: 'https://raw.githubusercontent.com/yanzhenjie/bintray/master/maven.gradle'
+//apply from: 'https://raw.githubusercontent.com/yanzhenjie/bintray/master/maven.gradle'

@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies.album
+//    implementation rootProject.ext.dependencies.album
 
     implementation rootProject.ext.dependencies.appCompat
     implementation rootProject.ext.dependencies.design
@@ -22,4 +22,6 @@ dependencies {
     implementation rootProject.ext.dependencies.cardView
 
     implementation rootProject.ext.dependencies.glide
+    implementation project(':album')
+
 }

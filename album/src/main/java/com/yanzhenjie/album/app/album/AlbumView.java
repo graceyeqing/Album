@@ -29,6 +29,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yanzhenjie.album.AlbumFolder;
 import com.yanzhenjie.album.R;
@@ -61,6 +63,14 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
 
     private LinearLayout mLayoutLoading;
     private ColorProgressBar mProgressBar;
+    //返回按钮
+    private LinearLayout ll_back;
+    //视频文件夹
+    private TextView tv_title_album_name;
+    //下一步
+    private TextView tx_selectpic_ok;
+    //底部布局
+    private RelativeLayout ll_bottom;
 
     public AlbumView(Activity activity, Contract.AlbumPresenter presenter) {
         super(activity, presenter);
@@ -74,10 +84,17 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
 
         this.mLayoutLoading = activity.findViewById(R.id.layout_loading);
         this.mProgressBar = activity.findViewById(R.id.progress_bar);
+        this.ll_back = activity.findViewById(R.id.ll_back);
+        this.tv_title_album_name = activity.findViewById(R.id.tv_title_album_name);
+        this.tx_selectpic_ok = activity.findViewById(R.id.tx_selectpic_ok);
+        this.ll_bottom = activity.findViewById(R.id.ll_bottom);
 
         this.mToolbar.setOnClickListener(new DoubleClickWrapper(this));
         this.mBtnSwitchFolder.setOnClickListener(this);
         this.mBtnPreview.setOnClickListener(this);
+        this.ll_back.setOnClickListener(this);
+        this.tv_title_album_name.setOnClickListener(this);
+        this.tx_selectpic_ok.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +109,16 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
         if (itemId == R.id.album_menu_finish) {
             getPresenter().complete();
         }
+    }
+
+    @Override
+    public void hideToolBar(boolean hide){
+        this.mToolbar.setVisibility(hide?View.GONE:View.VISIBLE);
+    }
+
+    @Override
+    public void hideBottomLayout(boolean hide) {
+        this.ll_bottom.setVisibility(hide?View.GONE:View.VISIBLE);
     }
 
     @Override
@@ -204,6 +231,7 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
     @Override
     public void setCheckedCount(int count) {
         mBtnPreview.setText(" (" + count + ")");
+        tx_selectpic_ok.setText("下一步"+" (" + count + "/1)");
     }
 
     @Override
@@ -214,6 +242,15 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
             getPresenter().clickFolderSwitch();
         } else if (v == mBtnPreview) {
             getPresenter().tryPreviewChecked();
+        }else if (v == ll_back) {
+            //返回
+            mActivity.finish();
+        }else if (v == tv_title_album_name) {
+            //视频文件夹
+            getPresenter().clickFolderSwitch();
+        }else if (v == tx_selectpic_ok) {
+            //下一步
+            getPresenter().complete();
         }
     }
 }
