@@ -232,6 +232,12 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
     public void setCheckedCount(int count) {
         mBtnPreview.setText(" (" + count + ")");
         tx_selectpic_ok.setText("下一步"+" (" + count + "/1)");
+        if(count>0){
+            tx_selectpic_ok.setTextColor(Color.parseColor("#AC69FE"));
+        }else{
+            tx_selectpic_ok.setTextColor(Color.parseColor("#676767"));
+        }
+
     }
 
     @Override
