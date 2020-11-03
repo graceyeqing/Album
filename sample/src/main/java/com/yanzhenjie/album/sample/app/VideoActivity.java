@@ -85,7 +85,8 @@ public class VideoActivity extends AppCompatActivity {
                 .checkedList(mAlbumFiles)
                 .widget(
                         Widget.newLightBuilder(this)
-                                .title(mToolbar.getTitle().toString())
+//                                .title(mToolbar.getTitle().toString())
+                                .title("所有图片")
                                 .build()
                 )
                 .onResult(new Action<ArrayList<AlbumFile>>() {

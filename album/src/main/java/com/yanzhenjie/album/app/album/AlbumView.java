@@ -135,6 +135,8 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
 
             mProgressBar.setColorFilter(getColor(R.color.albumLoadingDark));
 
+            tv_title_album_name.setText(widget.getTitle());
+
             Drawable navigationIcon = getDrawable(R.drawable.album_ic_back_white);
             AlbumUtils.setDrawableTint(navigationIcon, getColor(R.color.albumIconDark));
             setHomeAsUpIndicator(navigationIcon);
