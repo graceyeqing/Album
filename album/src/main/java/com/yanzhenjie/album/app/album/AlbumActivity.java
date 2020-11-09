@@ -91,7 +91,7 @@ public class AlbumActivity extends BaseActivity implements
     private MediaScanner mMediaScanner;
 
     private Contract.AlbumView mView;
-    private FolderDialog mFolderDialog;
+    private FolderDialog2 mFolderDialog;
     private PopupMenu mCameraPopupMenu;
     private LoadingDialog mLoadingDialog;
 
@@ -231,9 +231,9 @@ public class AlbumActivity extends BaseActivity implements
     }
 
     @Override
-    public void clickFolderSwitch() {
+    public void clickFolderSwitch(View v) {
         if (mFolderDialog == null) {
-            mFolderDialog = new FolderDialog(this, mWidget, mAlbumFolders, new OnItemClickListener() {
+            mFolderDialog = new FolderDialog2(this, mWidget, mAlbumFolders, new OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
                     mCurrentFolder = position;
@@ -242,7 +242,8 @@ public class AlbumActivity extends BaseActivity implements
             });
         }
         if (!mFolderDialog.isShowing()) {
-            mFolderDialog.show();
+//            mFolderDialog.show();
+            mFolderDialog.showAsDropDown(v);
         }
     }
 
@@ -630,6 +631,7 @@ public class AlbumActivity extends BaseActivity implements
         sDurationFilter = null;
         sResult = null;
         sCancel = null;
-        super.finish();
+//        super.finish();
     }
+
 }

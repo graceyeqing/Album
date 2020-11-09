@@ -24,7 +24,58 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            style="@style/Album.Toolbar.Dark" />
+            style="@style/Album.Toolbar.Dark"
+            android:visibility="gone"/>
+        <RelativeLayout
+            android:id="@+id/title_top"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_title_cha" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title_album_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/ic_top_list_arrow_expand"
+                android:drawableRight="@drawable/ic_top_list_arrow_expand"
+                android:gravity="center"
+                android:maxLength="11"
+                android:minWidth="100dp"
+                android:text="@string/album_title"
+                android:textColor="#333333"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tx_selectpic_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#676767"
+                android:textSize="14sp"
+                android:text="下一步(0/1)" />
+        </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
 

@@ -214,7 +214,7 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
     @Override
     public void bindAlbumFolder(AlbumFolder albumFolder) {
         mBtnSwitchFolder.setText(albumFolder.getName());
-
+        tv_title_album_name.setText(albumFolder.getName());
         mAdapter.setAlbumFiles(albumFolder.getAlbumFiles());
         mAdapter.notifyDataSetChanged();
         mRecyclerView.scrollToPosition(0);
@@ -247,7 +247,7 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
         if (v == mToolbar) {
             mRecyclerView.smoothScrollToPosition(0);
         } else if (v == mBtnSwitchFolder) {
-            getPresenter().clickFolderSwitch();
+            getPresenter().clickFolderSwitch(mBtnSwitchFolder);
         } else if (v == mBtnPreview) {
             getPresenter().tryPreviewChecked();
         }else if (v == ll_back) {
@@ -255,7 +255,7 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
             mActivity.finish();
         }else if (v == tv_title_album_name) {
             //视频文件夹
-            getPresenter().clickFolderSwitch();
+            getPresenter().clickFolderSwitch(tv_title_album_name);
         }else if (v == tx_selectpic_ok) {
             //下一步
             getPresenter().complete();

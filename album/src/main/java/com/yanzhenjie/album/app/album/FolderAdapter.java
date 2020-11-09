@@ -17,12 +17,14 @@ package com.yanzhenjie.album.app.album;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yanzhenjie.album.Album;
@@ -65,8 +67,9 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.FolderViewHolder>
 
                     @Override
                     public void onItemClick(View view, int position) {
-                        if (mItemClickListener != null)
+                        if (mItemClickListener != null) {
                             mItemClickListener.onItemClick(view, position);
+                        }
 
                         AlbumFolder albumFolder = mAlbumFolders.get(position);
                         if (!albumFolder.isChecked()) {
@@ -97,7 +100,8 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.FolderViewHolder>
 
         private ImageView mIvImage;
         private TextView mTvTitle;
-        private AppCompatRadioButton mCheckBox;
+//        private AppCompatRadioButton mCheckBox;
+        private RelativeLayout ll_root;
 
         private FolderViewHolder(View itemView, ColorStateList selector, OnItemClickListener itemClickListener) {
             super(itemView);
@@ -106,25 +110,32 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.FolderViewHolder>
 
             mIvImage = itemView.findViewById(R.id.iv_gallery_preview_image);
             mTvTitle = itemView.findViewById(R.id.tv_gallery_preview_title);
-            mCheckBox = itemView.findViewById(R.id.rb_gallery_preview_check);
+//            mCheckBox = itemView.findViewById(R.id.rb_gallery_preview_check);
+            ll_root = itemView.findViewById(R.id.ll_root);
 
             itemView.setOnClickListener(this);
 
-            mCheckBox.setSupportButtonTintList(selector);
+//            mCheckBox.setSupportButtonTintList(selector);
         }
 
         public void setData(AlbumFolder albumFolder) {
             List<AlbumFile> albumFiles = albumFolder.getAlbumFiles();
             mTvTitle.setText("(" + albumFiles.size() + ") " + albumFolder.getName());
-            mCheckBox.setChecked(albumFolder.isChecked());
+//            mCheckBox.setChecked(albumFolder.isChecked());
+            if(albumFolder.isChecked()){
+                ll_root.setBackgroundColor(Color.parseColor("#FAFAFA"));
+            }else{
+                ll_root.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            }
 
             Album.getAlbumConfig().getAlbumLoader().load(mIvImage, albumFiles.get(0));
         }
 
         @Override
         public void onClick(View v) {
-            if (mItemClickListener != null)
+            if (mItemClickListener != null) {
                 mItemClickListener.onItemClick(v, getAdapterPosition());
+            }
         }
     }
 

@@ -38,7 +38,7 @@ public final class Contract {
         /**
          * Click the folder switch.
          */
-        void clickFolderSwitch();
+        void clickFolderSwitch(View v);
 
         /**
          * Click camera.

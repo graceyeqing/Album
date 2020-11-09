@@ -57,7 +57,7 @@
                 android:gravity="center"
                 android:maxLength="11"
                 android:minWidth="100dp"
-                android:text="所有视频"
+                android:text="@string/album_title"
                 android:textColor="#333333"
                 android:textSize="18sp" />
 

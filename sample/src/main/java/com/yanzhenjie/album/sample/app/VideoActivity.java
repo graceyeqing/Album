@@ -86,7 +86,7 @@ public class VideoActivity extends AppCompatActivity {
                 .widget(
                         Widget.newLightBuilder(this)
 //                                .title(mToolbar.getTitle().toString())
-                                .title("所有图片")
+                                .title("所有视频")
                                 .build()
                 )
                 .onResult(new Action<ArrayList<AlbumFile>>() {
