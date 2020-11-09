@@ -26,6 +26,7 @@ import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 
 import com.yanzhenjie.album.Album;
+import com.yanzhenjie.album.BaseAppManager;
 import com.yanzhenjie.album.util.AlbumUtils;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class BaseActivity extends AppCompatActivity implements Bye {
         super.onCreate(savedInstanceState);
         Locale locale = Album.getAlbumConfig().getLocale();
         AlbumUtils.applyLanguageForContext(this, locale);
+        BaseAppManager.getInstance().addActivity(this);
     }
 
     /**
@@ -68,8 +70,11 @@ public class BaseActivity extends AppCompatActivity implements Bye {
 
     @Override
     public final void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (isGrantedResult(grantResults)) onPermissionGranted(requestCode);
-        else onPermissionDenied(requestCode);
+        if (isGrantedResult(grantResults)) {
+            onPermissionGranted(requestCode);
+        } else {
+            onPermissionDenied(requestCode);
+        }
     }
 
     protected void onPermissionGranted(int code) {
@@ -95,8 +100,16 @@ public class BaseActivity extends AppCompatActivity implements Bye {
 
     private static boolean isGrantedResult(int... grantResults) {
         for (int result : grantResults) {
-            if (result == PackageManager.PERMISSION_DENIED) return false;
+            if (result == PackageManager.PERMISSION_DENIED) {
+                return false;
+            }
         }
         return true;
+    }
+
+    @Override
+    public void finish() {
+        BaseAppManager.getInstance().removeActivity(this);
+        super.finish();
     }
 }

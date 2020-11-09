@@ -38,6 +38,7 @@ import com.yanzhenjie.album.api.choice.AlbumChoice;
 import com.yanzhenjie.album.api.choice.Choice;
 import com.yanzhenjie.album.api.choice.ImageChoice;
 import com.yanzhenjie.album.api.choice.VideoChoice;
+import com.yanzhenjie.album.app.album.AlbumActivity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -104,8 +105,11 @@ public final class Album {
      * @param albumConfig {@link AlbumConfig}.
      */
     public static void initialize(AlbumConfig albumConfig) {
-        if (sAlbumConfig == null) sAlbumConfig = albumConfig;
-        else Log.w("Album", new IllegalStateException("Illegal operation, only allowed to configure once."));
+        if (sAlbumConfig == null) {
+            sAlbumConfig = albumConfig;
+        } else {
+            Log.w("Album", new IllegalStateException("Illegal operation, only allowed to configure once."));
+        }
     }
 
     /**
@@ -284,5 +288,9 @@ public final class Album {
      */
     public static BasicGalleryWrapper<GalleryAlbumWrapper, AlbumFile, String, AlbumFile> galleryAlbum(android.support.v4.app.Fragment fragment) {
         return new GalleryAlbumWrapper(fragment.getContext());
+    }
+
+    public static void finishAlbumActivity(){
+        BaseAppManager.getInstance().clear();
     }
 }

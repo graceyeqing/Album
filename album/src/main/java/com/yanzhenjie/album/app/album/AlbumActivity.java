@@ -589,7 +589,12 @@ public class AlbumActivity extends BaseActivity implements
             sResult.onAction(albumFiles);
         }
         dismissLoadingDialog();
-        finish();
+//        finish();
+        sSizeFilter = null;
+        sMimeFilter = null;
+        sDurationFilter = null;
+        sResult = null;
+        sCancel = null;
     }
 
     /**
@@ -599,12 +604,7 @@ public class AlbumActivity extends BaseActivity implements
         if (sCancel != null) {
             sCancel.onAction("User canceled.");
         }
-//        finish();
-        sSizeFilter = null;
-        sMimeFilter = null;
-        sDurationFilter = null;
-        sResult = null;
-        sCancel = null;
+        finish();
     }
 
     /**
