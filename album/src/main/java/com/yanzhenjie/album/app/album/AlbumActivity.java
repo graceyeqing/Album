@@ -599,7 +599,12 @@ public class AlbumActivity extends BaseActivity implements
         if (sCancel != null) {
             sCancel.onAction("User canceled.");
         }
-        finish();
+//        finish();
+        sSizeFilter = null;
+        sMimeFilter = null;
+        sDurationFilter = null;
+        sResult = null;
+        sCancel = null;
     }
 
     /**
@@ -631,7 +636,7 @@ public class AlbumActivity extends BaseActivity implements
         sDurationFilter = null;
         sResult = null;
         sCancel = null;
-//        super.finish();
+        super.finish();
     }
 
 }
