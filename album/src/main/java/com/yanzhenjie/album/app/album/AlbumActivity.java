@@ -104,7 +104,7 @@ public class AlbumActivity extends BaseActivity implements
         setContentView(createView());
         mView = new AlbumView(this, this);
         mView.setTitle(mWidget.getTitle());
-        mView.setupViews(mWidget, mColumnCount, mHasCamera, mChoiceMode);
+        mView.setupViews(mWidget, mColumnCount, mHasCamera, mChoiceMode,mFunction);
         mView.setCompleteDisplay(false);
         mView.setLoadingDisplay(true);
         mView.hideToolBar(true);

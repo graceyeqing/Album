@@ -87,7 +87,7 @@ public final class Contract {
          * @param choiceMode choice mode, one of {@link Album#FUNCTION_CHOICE_ALBUM}, {@link
          *     Album#FUNCTION_CHOICE_IMAGE} or {@link Album#FUNCTION_CHOICE_VIDEO}.
          */
-        public abstract void setupViews(Widget widget, int column, boolean hasCamera, int choiceMode);
+        public abstract void setupViews(Widget widget, int column, boolean hasCamera, int choiceMode,int function);
 
         /**
          * Set the loading visibility.

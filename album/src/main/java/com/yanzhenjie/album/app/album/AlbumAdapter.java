@@ -50,6 +50,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private final LayoutInflater mInflater;
     private final boolean hasCamera;
     private final int mChoiceMode;
+    private  int mFunction;
     private final ColorStateList mSelector;
 
     private List<AlbumFile> mAlbumFiles;
@@ -58,11 +59,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private OnItemClickListener mItemClickListener;
     private OnCheckedClickListener mCheckedClickListener;
 
-    public AlbumAdapter(Context context, boolean hasCamera, int choiceMode, ColorStateList selector) {
+    public AlbumAdapter(Context context, boolean hasCamera, int choiceMode,int function, ColorStateList selector) {
         this.mInflater = LayoutInflater.from(context);
         this.hasCamera = hasCamera;
         this.mChoiceMode = choiceMode;
         this.mSelector = selector;
+        this.mFunction = function;
     }
 
     public void setAlbumFiles(List<AlbumFile> albumFiles) {
@@ -91,7 +93,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public int getItemViewType(int position) {
         switch (position) {
             case 0: {
-                return hasCamera ? TYPE_BUTTON : TYPE_IMAGE;
+                if(!hasCamera && mFunction == Album.FUNCTION_CHOICE_VIDEO){
+                    return TYPE_VIDEO;
+                }else{
+                    return hasCamera ? TYPE_BUTTON : TYPE_IMAGE;
+                }
             }
             default: {
                 position = hasCamera ? position - 1 : position;
