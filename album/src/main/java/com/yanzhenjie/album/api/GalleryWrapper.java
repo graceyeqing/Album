@@ -19,6 +19,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.yanzhenjie.album.Album;
+import com.yanzhenjie.album.AlbumFile;
+import com.yanzhenjie.album.app.album.AlbumActivity;
 import com.yanzhenjie.album.app.gallery.GalleryActivity;
 import com.yanzhenjie.album.app.gallery.GalleryAlbumActivity;
 
@@ -26,7 +28,7 @@ import com.yanzhenjie.album.app.gallery.GalleryAlbumActivity;
  * <p>Gallery wrapper.</p>
  * Created by yanzhenjie on 17-3-29.
  */
-public class GalleryWrapper extends BasicGalleryWrapper<GalleryWrapper, String, String, String> {
+public class GalleryWrapper extends BasicGalleryWrapper<GalleryWrapper, String, AlbumFile, String, String> {
 
     public GalleryWrapper(Context context) {
         super(context);

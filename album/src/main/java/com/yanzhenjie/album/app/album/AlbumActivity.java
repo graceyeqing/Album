@@ -70,6 +70,7 @@ public class AlbumActivity extends BaseActivity implements
 
     public static Action<ArrayList<AlbumFile>> sResult;
     public static Action<String> sCancel;
+    public static Action<AlbumFile> sPreview;
 
     private List<AlbumFolder> mAlbumFolders;
     private int mCurrentFolder;
@@ -111,6 +112,11 @@ public class AlbumActivity extends BaseActivity implements
         mView.hideBottomLayout(true);
 
         requestPermission(PERMISSION_STORAGE, CODE_PERMISSION_STORAGE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private void initializeArgument() {
@@ -482,13 +488,17 @@ public class AlbumActivity extends BaseActivity implements
                 break;
             }
             case Album.MODE_MULTIPLE: {
-                GalleryActivity.sAlbumFiles = mAlbumFolders.get(mCurrentFolder).getAlbumFiles();
-                GalleryActivity.sCheckedCount = mCheckedList.size();
-                GalleryActivity.sCurrentPosition = position;
-                GalleryActivity.sCallback = this;
-                Intent intent = new Intent(this, GalleryActivity.class);
-                intent.putExtras(getIntent());
-                startActivity(intent);
+                if (sPreview != null) {
+                    sPreview.onAction(mAlbumFolders.get(mCurrentFolder).getAlbumFiles().get(position));
+                }else{
+                    GalleryActivity.sAlbumFiles = mAlbumFolders.get(mCurrentFolder).getAlbumFiles();
+                    GalleryActivity.sCheckedCount = mCheckedList.size();
+                    GalleryActivity.sCurrentPosition = position;
+                    GalleryActivity.sCallback = this;
+                    Intent intent = new Intent(this, GalleryActivity.class);
+                    intent.putExtras(getIntent());
+                    startActivity(intent);
+                }
                 break;
             }
             default: {
@@ -590,11 +600,6 @@ public class AlbumActivity extends BaseActivity implements
         }
         dismissLoadingDialog();
 //        finish();
-        sSizeFilter = null;
-        sMimeFilter = null;
-        sDurationFilter = null;
-        sResult = null;
-        sCancel = null;
     }
 
     /**

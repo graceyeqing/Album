@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by YanZhenjie on 2017/8/16.
  */
-public final class VideoSingleWrapper extends BasicChoiceVideoWrapper<VideoSingleWrapper, ArrayList<AlbumFile>, String, AlbumFile> {
+public final class VideoSingleWrapper extends BasicChoiceVideoWrapper<VideoSingleWrapper, ArrayList<AlbumFile>, AlbumFile,String, AlbumFile> {
 
     private Filter<Long> mDurationFilter;
 
@@ -52,6 +52,7 @@ public final class VideoSingleWrapper extends BasicChoiceVideoWrapper<VideoSingl
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);

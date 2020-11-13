@@ -23,7 +23,7 @@ import com.yanzhenjie.album.Filter;
 /**
  * Created by YanZhenjie on 2017/8/16.
  */
-public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Result, Cancel, Checked> extends BasicAlbumWrapper<Returner, Result, Cancel, Checked> {
+public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Result,Preview, Cancel, Checked> extends BasicAlbumWrapper<Returner, Result, Preview,Cancel, Checked> {
 
     boolean mHasCamera = true;
     int mColumnCount = 2;

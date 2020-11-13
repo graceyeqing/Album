@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * <p>Album wrapper.</p>
  * Created by yanzhenjie on 17-3-29.
  */
-public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleWrapper, ArrayList<AlbumFile>, String, ArrayList<AlbumFile>> {
+public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleWrapper, ArrayList<AlbumFile>, AlbumFile,String, ArrayList<AlbumFile>> {
 
     private int mLimitCount = Integer.MAX_VALUE;
     private Filter<Long> mDurationFilter;
@@ -75,6 +75,7 @@ public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleW
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);

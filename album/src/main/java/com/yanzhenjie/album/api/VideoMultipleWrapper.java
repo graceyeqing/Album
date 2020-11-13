@@ -29,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by YanZhenjie on 2017/8/16.
  */
-public final class VideoMultipleWrapper extends BasicChoiceVideoWrapper<VideoMultipleWrapper, ArrayList<AlbumFile>, String, ArrayList<AlbumFile>> {
+public final class VideoMultipleWrapper extends BasicChoiceVideoWrapper<VideoMultipleWrapper, ArrayList<AlbumFile>,AlbumFile, String, ArrayList<AlbumFile>> {
 
     private int mLimitCount = Integer.MAX_VALUE;
     private Filter<Long> mDurationFilter;
@@ -74,6 +74,7 @@ public final class VideoMultipleWrapper extends BasicChoiceVideoWrapper<VideoMul
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by YanZhenjie on 2017/8/16.
  */
-public final class ImageSingleWrapper extends BasicChoiceWrapper<ImageSingleWrapper, ArrayList<AlbumFile>, String, AlbumFile> {
+public final class ImageSingleWrapper extends BasicChoiceWrapper<ImageSingleWrapper, ArrayList<AlbumFile>, AlbumFile,String, AlbumFile> {
 
     public ImageSingleWrapper(Context context) {
         super(context);
@@ -38,6 +38,7 @@ public final class ImageSingleWrapper extends BasicChoiceWrapper<ImageSingleWrap
         AlbumActivity.sSizeFilter = mSizeFilter;
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);

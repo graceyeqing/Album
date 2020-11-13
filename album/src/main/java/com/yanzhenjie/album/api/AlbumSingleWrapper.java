@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * <p>Album wrapper.</p>
  * Created by yanzhenjie on 17-3-29.
  */
-public class AlbumSingleWrapper extends BasicChoiceAlbumWrapper<AlbumSingleWrapper, ArrayList<AlbumFile>, String, AlbumFile> {
+public class AlbumSingleWrapper extends BasicChoiceAlbumWrapper<AlbumSingleWrapper, ArrayList<AlbumFile>,AlbumFile, String, AlbumFile> {
 
     private Filter<Long> mDurationFilter;
 
@@ -53,6 +53,7 @@ public class AlbumSingleWrapper extends BasicChoiceAlbumWrapper<AlbumSingleWrapp
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);

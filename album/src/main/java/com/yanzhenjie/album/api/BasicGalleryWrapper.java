@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by YanZhenjie on 2017/8/19.
  */
-public abstract class BasicGalleryWrapper<Returner extends BasicGalleryWrapper, Result, Cancel, Checked> extends BasicAlbumWrapper<Returner, ArrayList<Result>, Cancel, ArrayList<Checked>> {
+public abstract class BasicGalleryWrapper<Returner extends BasicGalleryWrapper, Result, Preview,Cancel, Checked> extends BasicAlbumWrapper<Returner, ArrayList<Result>, Preview,Cancel, ArrayList<Checked>> {
 
     ItemAction<Checked> mItemClick;
     ItemAction<Checked> mItemLongClick;

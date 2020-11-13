@@ -97,6 +97,12 @@ public class VideoActivity extends AppCompatActivity {
                         mTvMessage.setVisibility(result.size() > 0 ? View.VISIBLE : View.GONE);
                     }
                 })
+                .onPreview(new Action<AlbumFile>() {
+                    @Override
+                    public void onAction(@NonNull AlbumFile result) {
+                        Toast.makeText(VideoActivity.this, ""+result.getDuration(), Toast.LENGTH_LONG).show();
+                    }
+                })
                 .onCancel(new Action<String>() {
                     @Override
                     public void onAction(@NonNull String result) {

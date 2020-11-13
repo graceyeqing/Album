@@ -25,10 +25,11 @@ import com.yanzhenjie.album.api.widget.Widget;
  * <p>Album basic wrapper.</p>
  * Created by yanzhenjie on 17-3-29.
  */
-public abstract class BasicAlbumWrapper<Returner extends BasicAlbumWrapper, Result, Cancel, Checked> {
+public abstract class BasicAlbumWrapper<Returner extends BasicAlbumWrapper, Result, Preview,Cancel, Checked> {
 
     final Context mContext;
     Action<Result> mResult;
+    Action<Preview> mPreview;
     Action<Cancel> mCancel;
     Widget mWidget;
     Checked mChecked;
@@ -45,6 +46,16 @@ public abstract class BasicAlbumWrapper<Returner extends BasicAlbumWrapper, Resu
      */
     public final Returner onResult(Action<Result> result) {
         this.mResult = result;
+        return (Returner) this;
+    }
+
+    /**
+     * 预览视频
+     * @param preview
+     * @return
+     */
+    public final Returner onPreview(Action<Preview> preview) {
+        this.mPreview = preview;
         return (Returner) this;
     }
 

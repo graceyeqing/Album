@@ -22,13 +22,14 @@ import android.support.annotation.IntRange;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumFile;
 import com.yanzhenjie.album.app.album.AlbumActivity;
+import com.yanzhenjie.album.app.gallery.GalleryActivity;
 
 import java.util.ArrayList;
 
 /**
  * Created by YanZhenjie on 2017/8/16.
  */
-public final class ImageMultipleWrapper extends BasicChoiceWrapper<ImageMultipleWrapper, ArrayList<AlbumFile>, String, ArrayList<AlbumFile>> {
+public final class ImageMultipleWrapper extends BasicChoiceWrapper<ImageMultipleWrapper, ArrayList<AlbumFile>, AlbumFile,String, ArrayList<AlbumFile>> {
 
     @IntRange(from = 1, to = Integer.MAX_VALUE)
     private int mLimitCount = Integer.MAX_VALUE;
@@ -62,6 +63,7 @@ public final class ImageMultipleWrapper extends BasicChoiceWrapper<ImageMultiple
         AlbumActivity.sSizeFilter = mSizeFilter;
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sResult = mResult;
+        AlbumActivity.sPreview = mPreview;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(Album.KEY_INPUT_WIDGET, mWidget);
