@@ -36,12 +36,13 @@ public class MediaReadTask extends AsyncTask<Void, Void, MediaReadTask.ResultWra
          *
          * @param albumFolders album folder list.
          */
-        void onScanCallback(ArrayList<AlbumFolder> albumFolders, ArrayList<AlbumFile> checkedFiles);
+        void onScanCallback(ArrayList<AlbumFolder> albumFolders, ArrayList<AlbumFile> checkedFiles,ArrayList<Integer> mSelectPositions);
     }
 
     static class ResultWrapper {
         private ArrayList<AlbumFolder> mAlbumFolders;
         private ArrayList<AlbumFile> mAlbumFiles;
+        private ArrayList<Integer> mSelectPositions;
     }
 
     private int mFunction;
@@ -78,7 +79,7 @@ public class MediaReadTask extends AsyncTask<Void, Void, MediaReadTask.ResultWra
         }
 
         ArrayList<AlbumFile> checkedFiles = new ArrayList<>();
-
+        ArrayList<Integer> positions = new ArrayList<>();
         if (mCheckedFiles != null && !mCheckedFiles.isEmpty()) {
             List<AlbumFile> albumFiles = albumFolders.get(0).getAlbumFiles();
             for (AlbumFile checkAlbumFile : mCheckedFiles) {
@@ -87,6 +88,7 @@ public class MediaReadTask extends AsyncTask<Void, Void, MediaReadTask.ResultWra
                     if (checkAlbumFile.equals(albumFile)) {
                         albumFile.setChecked(true);
                         checkedFiles.add(albumFile);
+                        positions.add(i);
                     }
                 }
             }
@@ -94,11 +96,12 @@ public class MediaReadTask extends AsyncTask<Void, Void, MediaReadTask.ResultWra
         ResultWrapper wrapper = new ResultWrapper();
         wrapper.mAlbumFolders = albumFolders;
         wrapper.mAlbumFiles = checkedFiles;
+        wrapper.mSelectPositions = positions;
         return wrapper;
     }
 
     @Override
     protected void onPostExecute(ResultWrapper wrapper) {
-        mCallback.onScanCallback(wrapper.mAlbumFolders, wrapper.mAlbumFiles);
+        mCallback.onScanCallback(wrapper.mAlbumFolders, wrapper.mAlbumFiles,wrapper.mSelectPositions);
     }
 }

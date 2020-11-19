@@ -231,6 +231,11 @@ class AlbumView extends Contract.AlbumView implements View.OnClickListener {
     }
 
     @Override
+    public void notifyDataChange() {
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void setCheckedCount(int count) {
         mBtnPreview.setText(" (" + count + ")");
         tx_selectpic_ok.setText("下一步"+" (" + count + "/1)");

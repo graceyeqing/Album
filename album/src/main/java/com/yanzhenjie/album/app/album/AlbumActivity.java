@@ -97,6 +97,8 @@ public class AlbumActivity extends BaseActivity implements
     private LoadingDialog mLoadingDialog;
 
     private MediaReadTask mMediaReadTask;
+    //如果多选模式，但是最多选择一个，记录上一次选中的position
+    private int lastPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +188,7 @@ public class AlbumActivity extends BaseActivity implements
     }
 
     @Override
-    public void onScanCallback(ArrayList<AlbumFolder> albumFolders, ArrayList<AlbumFile> checkedFiles) {
+    public void onScanCallback(ArrayList<AlbumFolder> albumFolders, ArrayList<AlbumFile> checkedFiles,ArrayList<Integer> mSelectPositions) {
         mMediaReadTask = null;
         switch (mChoiceMode) {
             case Album.MODE_MULTIPLE: {
@@ -206,6 +208,11 @@ public class AlbumActivity extends BaseActivity implements
         mAlbumFolders = albumFolders;
         mCheckedList = checkedFiles;
 
+        if(mSelectPositions != null && mSelectPositions.size() > 0){
+            if(mLimitCount == 1){
+                lastPosition = mSelectPositions.get(0);
+            }
+        }
         if (mAlbumFolders.get(0).getAlbumFiles().isEmpty()) {
             Intent intent = new Intent(this, NullActivity.class);
             intent.putExtras(getIntent());
@@ -434,7 +441,19 @@ public class AlbumActivity extends BaseActivity implements
     @Override
     public void tryCheckItem(CompoundButton button, int position) {
         AlbumFile albumFile = mAlbumFolders.get(mCurrentFolder).getAlbumFiles().get(position);
+        if(mLimitCount == 1){
+            if(lastPosition > -1){
+                AlbumFile lastAlbumFile = mAlbumFolders.get(mCurrentFolder).getAlbumFiles().get(lastPosition);
+                lastAlbumFile.setChecked(false);
+                mCheckedList.remove(lastAlbumFile);
+                mView.notifyDataChange();
+        }
+        }
+
         if (button.isChecked()) {
+            if(mLimitCount == 1){
+                lastPosition = position;
+            }
             if (mCheckedList.size() >= mLimitCount) {
                 int messageRes;
                 switch (mFunction) {
@@ -462,6 +481,9 @@ public class AlbumActivity extends BaseActivity implements
                 setCheckedCount();
             }
         } else {
+            if(mLimitCount == 1){
+                lastPosition = -1;
+            }
             albumFile.setChecked(false);
             mCheckedList.remove(albumFile);
             setCheckedCount();

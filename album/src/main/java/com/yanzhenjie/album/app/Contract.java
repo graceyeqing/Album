@@ -131,6 +131,8 @@ public final class Contract {
          */
         public abstract void notifyItem(int position);
 
+        public abstract void notifyDataChange();
+
         /**
          * Set checked count.
          *
