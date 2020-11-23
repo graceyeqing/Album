@@ -24,6 +24,11 @@
             style="@style/Album.MatchParent"
             android:contentDescription="@string/album_title"
             android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/iv_mask"
+            style="@style/Album.MatchParent"
+            android:background="@drawable/bg_mask"
+            android:visibility="visible" />
 
         <com.yanzhenjie.album.widget.TransferLayout
             style="@style/Album.WrapContent.Transfer"
