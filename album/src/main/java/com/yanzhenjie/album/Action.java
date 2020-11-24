@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 /**
@@ -28,6 +29,6 @@ public interface Action<T> {
      *
      * @param result the result of the action.
      */
-    void onAction(@NonNull T result);
+    void onAction(Context context, @NonNull T result);
 
 }

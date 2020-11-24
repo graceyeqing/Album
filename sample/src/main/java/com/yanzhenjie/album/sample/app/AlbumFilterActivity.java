@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album.sample.app;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -105,7 +106,7 @@ public class AlbumFilterActivity extends AppCompatActivity {
                 )
                 .onResult(new Action<ArrayList<AlbumFile>>() {
                     @Override
-                    public void onAction(@NonNull ArrayList<AlbumFile> result) {
+                    public void onAction(Context context, @NonNull ArrayList<AlbumFile> result) {
                         mAlbumFiles = result;
                         mAdapter.notifyDataSetChanged(mAlbumFiles);
                         mTvMessage.setVisibility(result.size() > 0 ? View.VISIBLE : View.GONE);
@@ -113,7 +114,7 @@ public class AlbumFilterActivity extends AppCompatActivity {
                 })
                 .onCancel(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context,@NonNull String result) {
                         Toast.makeText(AlbumFilterActivity.this, R.string.canceled, Toast.LENGTH_LONG).show();
                     }
                 })
@@ -138,7 +139,7 @@ public class AlbumFilterActivity extends AppCompatActivity {
                     )
                     .onResult(new Action<ArrayList<AlbumFile>>() {
                         @Override
-                        public void onAction(@NonNull ArrayList<AlbumFile> result) {
+                        public void onAction(Context context,@NonNull ArrayList<AlbumFile> result) {
                             mAlbumFiles = result;
                             mAdapter.notifyDataSetChanged(mAlbumFiles);
                             mTvMessage.setVisibility(result.size() > 0 ? View.VISIBLE : View.GONE);

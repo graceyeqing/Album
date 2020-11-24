@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album.sample.app;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -91,7 +92,7 @@ public class VideoActivity extends AppCompatActivity {
                 )
                 .onResult(new Action<ArrayList<AlbumFile>>() {
                     @Override
-                    public void onAction(@NonNull ArrayList<AlbumFile> result) {
+                    public void onAction(Context context, @NonNull ArrayList<AlbumFile> result) {
                         mAlbumFiles = result;
                         mAdapter.notifyDataSetChanged(mAlbumFiles);
                         mTvMessage.setVisibility(result.size() > 0 ? View.VISIBLE : View.GONE);
@@ -99,13 +100,13 @@ public class VideoActivity extends AppCompatActivity {
                 })
                 .onPreview(new Action<AlbumFile>() {
                     @Override
-                    public void onAction(@NonNull AlbumFile result) {
+                    public void onAction(Context context,@NonNull AlbumFile result) {
                         Toast.makeText(VideoActivity.this, ""+result.getDuration(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .onCancel(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context,@NonNull String result) {
                         Toast.makeText(VideoActivity.this, R.string.canceled, Toast.LENGTH_LONG).show();
                     }
                 })
@@ -130,7 +131,7 @@ public class VideoActivity extends AppCompatActivity {
                     )
                     .onResult(new Action<ArrayList<AlbumFile>>() {
                         @Override
-                        public void onAction(@NonNull ArrayList<AlbumFile> result) {
+                        public void onAction(Context context,@NonNull ArrayList<AlbumFile> result) {
                             mAlbumFiles = result;
                             mAdapter.notifyDataSetChanged(mAlbumFiles);
                             mTvMessage.setVisibility(result.size() > 0 ? View.VISIBLE : View.GONE);

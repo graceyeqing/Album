@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album.sample.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -94,7 +95,7 @@ public class GalleryActivity extends AppCompatActivity {
                 )
                 .onResult(new Action<ArrayList<String>>() {
                     @Override
-                    public void onAction(@NonNull ArrayList<String> result) {
+                    public void onAction(Context context, @NonNull ArrayList<String> result) {
                         // TODO If it is optional, here you can accept the results of user selection.
                     }
                 })

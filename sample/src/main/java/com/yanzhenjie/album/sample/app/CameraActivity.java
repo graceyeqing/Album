@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album.sample.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,7 +60,7 @@ public class CameraActivity extends AppCompatActivity {
 //                .filePath()
                 .onResult(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context, @NonNull String result) {
                         mTextView.setText(result);
 
                         Album.getAlbumConfig()
@@ -69,7 +70,7 @@ public class CameraActivity extends AppCompatActivity {
                 })
                 .onCancel(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context,@NonNull String result) {
                         Toast.makeText(CameraActivity.this, R.string.canceled, Toast.LENGTH_LONG).show();
                     }
                 })
@@ -85,7 +86,7 @@ public class CameraActivity extends AppCompatActivity {
                 .limitBytes(Integer.MAX_VALUE)
                 .onResult(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context,@NonNull String result) {
                         mTextView.setText(result);
 
                         Album.getAlbumConfig()
@@ -95,7 +96,7 @@ public class CameraActivity extends AppCompatActivity {
                 })
                 .onCancel(new Action<String>() {
                     @Override
-                    public void onAction(@NonNull String result) {
+                    public void onAction(Context context,@NonNull String result) {
                         Toast.makeText(CameraActivity.this, R.string.canceled, Toast.LENGTH_LONG).show();
                     }
                 })

@@ -129,14 +129,14 @@ public class GalleryActivity extends BaseActivity implements Contract.GalleryPre
             for (Map.Entry<String, Boolean> entry : mCheckedMap.entrySet()) {
                 if (entry.getValue()) checkedList.add(entry.getKey());
             }
-            sResult.onAction(checkedList);
+            sResult.onAction(this,checkedList);
         }
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        if (sCancel != null) sCancel.onAction("User canceled.");
+        if (sCancel != null) sCancel.onAction(this,"User canceled.");
         finish();
     }
 

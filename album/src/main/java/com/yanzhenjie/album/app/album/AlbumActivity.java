@@ -15,6 +15,7 @@
  */
 package com.yanzhenjie.album.app.album;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -233,7 +234,7 @@ public class AlbumActivity extends BaseActivity implements
                     String imagePath = NullActivity.parsePath(data);
                     String mimeType = AlbumUtils.getMimeType(imagePath);
                     if (!TextUtils.isEmpty(mimeType)) {
-                        mCameraAction.onAction(imagePath);
+                        mCameraAction.onAction(this,imagePath);
                     }
                 } else {
                     callbackCancel();
@@ -364,7 +365,7 @@ public class AlbumActivity extends BaseActivity implements
 
     private Action<String> mCameraAction = new Action<String>() {
         @Override
-        public void onAction(@NonNull String result) {
+        public void onAction(Context context, @NonNull String result) {
             if (mMediaScanner == null) {
                 mMediaScanner = new MediaScanner(AlbumActivity.this);
             }
@@ -511,7 +512,7 @@ public class AlbumActivity extends BaseActivity implements
             }
             case Album.MODE_MULTIPLE: {
                 if (sPreview != null) {
-                    sPreview.onAction(mAlbumFolders.get(mCurrentFolder).getAlbumFiles().get(position));
+                    sPreview.onAction(AlbumActivity.this,mAlbumFolders.get(mCurrentFolder).getAlbumFiles().get(position));
                 }else{
                     GalleryActivity.sAlbumFiles = mAlbumFolders.get(mCurrentFolder).getAlbumFiles();
                     GalleryActivity.sCheckedCount = mCheckedList.size();
@@ -618,7 +619,7 @@ public class AlbumActivity extends BaseActivity implements
     @Override
     public void onThumbnailCallback(ArrayList<AlbumFile> albumFiles) {
         if (sResult != null) {
-            sResult.onAction(albumFiles);
+            sResult.onAction(this,albumFiles);
         }
         dismissLoadingDialog();
 //        finish();
@@ -629,7 +630,7 @@ public class AlbumActivity extends BaseActivity implements
      */
     private void callbackCancel() {
         if (sCancel != null) {
-            sCancel.onAction("User canceled.");
+            sCancel.onAction(this,"User canceled.");
         }
         finish();
     }

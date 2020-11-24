@@ -131,14 +131,14 @@ public class GalleryAlbumActivity extends BaseActivity implements Contract.Galle
             for (AlbumFile albumFile : mAlbumFiles) {
                 if (albumFile.isChecked()) checkedList.add(albumFile);
             }
-            sResult.onAction(checkedList);
+            sResult.onAction(this,checkedList);
         }
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        if (sCancel != null) sCancel.onAction("User canceled.");
+        if (sCancel != null) sCancel.onAction(this,"User canceled.");
         finish();
     }
 

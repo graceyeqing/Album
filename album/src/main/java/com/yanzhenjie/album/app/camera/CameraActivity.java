@@ -175,14 +175,14 @@ public class CameraActivity extends BaseActivity {
     }
 
     private void callbackResult() {
-        if (sResult != null) sResult.onAction(mCameraFilePath);
+        if (sResult != null) sResult.onAction(this,mCameraFilePath);
         sResult = null;
         sCancel = null;
         finish();
     }
 
     private void callbackCancel() {
-        if (sCancel != null) sCancel.onAction("User canceled.");
+        if (sCancel != null) sCancel.onAction(this,"User canceled.");
         sResult = null;
         sCancel = null;
         finish();
