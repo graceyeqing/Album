@@ -134,7 +134,7 @@ public class ThumbnailBuilder {
      */
 
     public static File getFile(Bitmap bitmap) {
-        return getFile(bitmap, "/videotemp.png");
+        return getFile(bitmap, System.currentTimeMillis()+"/videotemp.jpg");
     }
 
     public static File getFile(Bitmap bitmap, String name) {
