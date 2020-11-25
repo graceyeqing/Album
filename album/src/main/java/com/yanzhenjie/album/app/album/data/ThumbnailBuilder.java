@@ -104,13 +104,12 @@ public class ThumbnailBuilder {
     public String createThumbnailForVideo(String videoPath) {
         if (TextUtils.isEmpty(videoPath)) return null;
 
-//        File thumbnailFile = randomPath(videoPath);
-//        if (thumbnailFile.exists()) return thumbnailFile.getAbsolutePath();
+        File thumbnailFile = randomPath(videoPath);
+        if (thumbnailFile.exists()) return thumbnailFile.getAbsolutePath();
 
         try {
             //获取视频第一帧做为图片
-            Bitmap videoThumbnail = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);//获取封面
-            return getFile(videoThumbnail).getPath();
+            Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);//获取封面
 
 //            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
 //            if (URLUtil.isNetworkUrl(videoPath)) {
@@ -119,9 +118,9 @@ public class ThumbnailBuilder {
 //                retriever.setDataSource(videoPath);
 //            }
 //            Bitmap bitmap = retriever.getFrameAtTime();
-//            thumbnailFile.createNewFile();
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, THUMBNAIL_QUALITY, new FileOutputStream(thumbnailFile));
-//            return thumbnailFile.getAbsolutePath();
+            thumbnailFile.createNewFile();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, THUMBNAIL_QUALITY, new FileOutputStream(thumbnailFile));
+            return thumbnailFile.getAbsolutePath();
         } catch (Exception ignored) {
             return null;
         }
