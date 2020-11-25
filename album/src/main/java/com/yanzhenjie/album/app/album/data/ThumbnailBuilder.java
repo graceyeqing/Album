@@ -21,6 +21,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
+import android.media.ThumbnailUtils;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 import android.text.TextUtils;
@@ -29,10 +32,12 @@ import android.webkit.URLUtil;
 import com.yanzhenjie.album.util.AlbumUtils;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -99,23 +104,57 @@ public class ThumbnailBuilder {
     public String createThumbnailForVideo(String videoPath) {
         if (TextUtils.isEmpty(videoPath)) return null;
 
-        File thumbnailFile = randomPath(videoPath);
-        if (thumbnailFile.exists()) return thumbnailFile.getAbsolutePath();
+//        File thumbnailFile = randomPath(videoPath);
+//        if (thumbnailFile.exists()) return thumbnailFile.getAbsolutePath();
 
         try {
-            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-            if (URLUtil.isNetworkUrl(videoPath)) {
-                retriever.setDataSource(videoPath, new HashMap<String, String>());
-            } else {
-                retriever.setDataSource(videoPath);
-            }
-            Bitmap bitmap = retriever.getFrameAtTime();
-            thumbnailFile.createNewFile();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, THUMBNAIL_QUALITY, new FileOutputStream(thumbnailFile));
-            return thumbnailFile.getAbsolutePath();
+            //获取视频第一帧做为图片
+            Bitmap videoThumbnail = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);//获取封面
+            return getFile(videoThumbnail).getPath();
+
+//            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//            if (URLUtil.isNetworkUrl(videoPath)) {
+//                retriever.setDataSource(videoPath, new HashMap<String, String>());
+//            } else {
+//                retriever.setDataSource(videoPath);
+//            }
+//            Bitmap bitmap = retriever.getFrameAtTime();
+//            thumbnailFile.createNewFile();
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, THUMBNAIL_QUALITY, new FileOutputStream(thumbnailFile));
+//            return thumbnailFile.getAbsolutePath();
         } catch (Exception ignored) {
             return null;
         }
+    }
+
+    /*****
+     * @description Bitmap对象转成File
+     * @param bitmap bitmap
+     *
+     */
+
+    public static File getFile(Bitmap bitmap) {
+        return getFile(bitmap, "/videotemp.png");
+    }
+
+    public static File getFile(Bitmap bitmap, String name) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator+name);
+        try {
+            file.createNewFile();
+            FileOutputStream fos = new FileOutputStream(file);
+            InputStream is = new ByteArrayInputStream(baos.toByteArray());
+            int x = 0;
+            byte[] b = new byte[1024 * 100];
+            while ((x = is.read(b)) != -1) {
+                fos.write(b, 0, x);
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 
     private File randomPath(String filePath) {
