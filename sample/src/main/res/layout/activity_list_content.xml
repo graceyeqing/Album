@@ -31,6 +31,12 @@
         android:id="@+id/image_view"
         style="@style/Album.WrapContent" />
 
+    <TextView
+        android:id="@+id/tv_flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开闪光灯"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         style="@style/Album.WrapContent.WidthMatchParent"

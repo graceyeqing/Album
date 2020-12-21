@@ -1,0 +1,43 @@
+{
+  "stringTable": {
+    "0": "E:/yeqingworkspace/opencv/opencamera-for-android/glcamera/.cxx/cmake/release/armeabi-v7a",
+    "1": "--target=armv7-none-linux-androideabi22 --gcc-toolchain=D:/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dyuv_decoder_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security -Oz -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\src\\main\\cpp\\CMakeLists.txt",
+    "D:\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "yuv-decoder-Release-armeabi-v7a": {
+      "buildCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\armeabi-v7a\" yuv-decoder",
+      "buildType": "release",
+      "toolchain": "3089861485",
+      "abi": "armeabi-v7a",
+      "artifactName": "yuv-decoder",
+      "files": [
+        {
+          "src": "E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\src\\main\\cpp\\yuv-decoder.c",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\libyuv-decoder.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "3089861485": {
+      "cCompilerExecutable": "D:\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

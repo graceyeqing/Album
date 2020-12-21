@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\src\\main\\cpp\\CMakeLists.txt",
+    "D:\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "yuv-decoder-Release-x86": {
+      "artifactName": "yuv-decoder",
+      "buildCommand": "D:\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\.cxx\\cmake\\release\\x86\" yuv-decoder",
+      "abi": "x86",
+      "output": "E:\\yeqingworkspace\\opencv\\opencamera-for-android\\glcamera\\build\\intermediates\\cmake\\release\\obj\\x86\\libyuv-decoder.so",
+      "runtimeFiles": []
+    }
+  }
+}

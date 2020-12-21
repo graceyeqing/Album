@@ -1,1 +1,2 @@
+include ':glcamera'
 include ':sample', ':album'

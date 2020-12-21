@@ -1,0 +1,3 @@
+E:/yeqingworkspace/opencv/opencamera-for-android/glcamera/.cxx/cmake/debug/arm64-v8a/CMakeFiles/yuv-decoder.dir
+E:/yeqingworkspace/opencv/opencamera-for-android/glcamera/.cxx/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/yeqingworkspace/opencv/opencamera-for-android/glcamera/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir
