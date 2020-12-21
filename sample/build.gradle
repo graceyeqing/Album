@@ -23,6 +23,4 @@ dependencies {
 
     implementation rootProject.ext.dependencies.glide
     implementation project(':album')
-    implementation project(':glcamera')
-
 }
