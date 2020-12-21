@@ -304,7 +304,6 @@ public class CameraCore {
 
     public void startRecord(){
 
-
             prepareMediarecorder();
 
             try {
@@ -317,8 +316,6 @@ public class CameraCore {
     }
 
     public void stopRecord(FileCallback fileCallback){
-
-
 
            if(mMediaRecorder != null){
                mMediaRecorder.release();
